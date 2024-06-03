@@ -2157,7 +2157,8 @@ static ExprResult PointerAuthAuthAndResign(Sema &S, CallExpr *Call) {
 }
 
 static ExprResult PointerAuthStringDiscriminator(Sema &S, CallExpr *Call) {
-  if (checkPointerAuthEnabled(S, Call)) return ExprError();
+  if (checkPointerAuthEnabled(S, Call))
+    return ExprError();
 
   // We've already performed normal call type-checking.
   const Expr *Arg = Call->getArg(0)->IgnoreParenImpCasts();
@@ -2166,8 +2167,7 @@ static ExprResult PointerAuthStringDiscriminator(Sema &S, CallExpr *Call) {
   const auto *Literal = dyn_cast<StringLiteral>(Arg);
   if (!Literal || Literal->getCharByteWidth() != 1) {
     S.Diag(Arg->getExprLoc(), diag::err_ptrauth_string_not_literal)
-      << (Literal ? 1 : 0)
-      << Arg->getSourceRange();
+        << (Literal ? 1 : 0) << Arg->getSourceRange();
     return ExprError();
   }
 
