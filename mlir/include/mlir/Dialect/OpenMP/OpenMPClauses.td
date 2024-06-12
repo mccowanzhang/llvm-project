@@ -949,6 +949,19 @@ class OpenMP_ReductionClauseSkip<
   }];
 
   // Description varies depending on the operation.
+  let description = [{
+    Reductions can be performed by specifying reduction accumulator variables in
+    `reduction_vars`, symbols referring to reduction declarations in the
+    `reductions` attribute, and whether the reduction variable should be passed
+    into the reduction region by value or by reference in
+    `reduction_vars_byref`. Each reduction is identified by the accumulator it
+    uses and accumulators must not be repeated in the same reduction. A private
+    variable corresponding to the accumulator is used in place of the
+    accumulator inside the body of the operation. The reduction declaration
+    specifies how to combine the values from each iteration/section/thread
+    defined by the operation's region into the final value, which is available
+    in the accumulator after they all complete.
+  }];
 }
 
 def OpenMP_ReductionClause : OpenMP_ReductionClauseSkip<>;
