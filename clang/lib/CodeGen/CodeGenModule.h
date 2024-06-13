@@ -965,10 +965,10 @@ public:
                                            GlobalDecl SchemaDecl,
                                            QualType SchemaType);
 
-  llvm::Constant *getConstantSignedPointer(llvm::Constant *pointer,
-                                           unsigned key,
-                                           llvm::Constant *storageAddress,
-                                           llvm::Constant *extraDiscrim);
+  llvm::Constant *getConstantSignedPointer(llvm::Constant *Pointer,
+                                           unsigned Key,
+                                           llvm::Constant *StorageAddress,
+                                           llvm::Constant *ExtraDiscrim);
 
   // Return whether RTTI information should be emitted for this target.
   bool shouldEmitRTTI(bool ForEH = false) {
